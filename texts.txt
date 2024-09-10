@@ -1,0 +1,2 @@
+1.moment js - for date and time.
+2. marquee - for slider continuously. 
