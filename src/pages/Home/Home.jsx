@@ -1,21 +1,34 @@
 import React, { useEffect, useState } from "react";
 import Header from "../../shared/Header/Header";
 import Navbar from "../../shared/Navbar/Navbar";
-import moment from "moment";
+import LeftSideNav from "../../shared/LeftSideNav/LeftSideNav.jsx";
+import RightSideNav from "../../shared/RightSideNav/RightSideNav";
+import News from "./News.jsx";
 
 const Home = () => {
-  const [date, setDate] = useState(moment().format("dddd, MMMM D, YYYY"));
-  setInterval(() => {
-    setDate(moment().format("dddd, MMMM D, YYYY, hh:mm:ss A"));
-  }, 1000);
   return (
     <div>
       <Header />
       <Navbar />
-      <h2 className="text-3xl">This is home.....</h2>
-      {/* Moment js implementation */}
-
-      <p className="text-2xl">{date}</p>
+      <div className="grid grid-cols-1 md:grid-cols-4 mt-16">
+        <div>
+          <LeftSideNav />
+        </div>
+        <div className="col-span-2   md:px-5">
+          <h2 className="text-xl text-[#403F3F] font-semibold mb-8">
+            Dragon News Home
+          </h2>
+          <div className="space-y-7">
+            <News />
+            <News />
+            <News />
+            <News />
+          </div>
+        </div>
+        <div>
+          <RightSideNav />
+        </div>
+      </div>
     </div>
   );
 };
