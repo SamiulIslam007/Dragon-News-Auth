@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import Navbar from "../../shared/Navbar/Navbar";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../Providers/AuthProvider";
 
 const Login = () => {
+  const { createUser } = useContext(AuthContext);
+
   const handleLogin = (e) => {
     e.preventDefault();
 

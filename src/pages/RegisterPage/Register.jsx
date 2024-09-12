@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import Navbar from "../../shared/Navbar/Navbar";
 import { Link } from "react-router-dom";
 import { Bounce, ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { AuthContext } from "../../Providers/AuthProvider";
 
 const Register = () => {
+  const { createUser } = useContext(AuthContext);
+
   const registerHandler = (e) => {
     e.preventDefault();
     const name = e.target.name.value;
@@ -28,6 +31,18 @@ const Register = () => {
 
       return;
     }
+    console.log(email, password);
+
+    createUser(email, password)
+      .then((result) => {
+        console.log(result.user);
+      })
+      .catch((e) => {
+        console.log(
+          "Error occured while creating user with email and password",
+          e
+        );
+      });
   };
 
   return (
