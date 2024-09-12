@@ -120,7 +120,7 @@ const Register = () => {
           </form>
           <h3 className="text-center">
             Already have an account?
-            <Link className="text-orange-500" to="/login">
+            <Link className="text-orange-500 font-bold" to="/login">
               Login
             </Link>
           </h3>
