@@ -1,12 +1,14 @@
 import React, { useContext } from "react";
 import Navbar from "../../shared/Navbar/Navbar";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Bounce, ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { AuthContext } from "../../Providers/AuthProvider";
 
 const Register = () => {
   const { createUser } = useContext(AuthContext);
+
+  const navigate = useNavigate();
 
   const registerHandler = (e) => {
     e.preventDefault();
@@ -36,6 +38,7 @@ const Register = () => {
     createUser(email, password)
       .then((result) => {
         console.log(result.user);
+        navigate("/");
       })
       .catch((e) => {
         console.log(
