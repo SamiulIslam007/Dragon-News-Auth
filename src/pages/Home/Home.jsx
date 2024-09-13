@@ -8,7 +8,10 @@ import { useLoaderData } from "react-router-dom";
 import Headline from "../../shared/Headline/Headline.jsx";
 
 const Home = () => {
-  const news = useLoaderData();
+  const loadedNews = useLoaderData();
+
+  const [news, setNews] = useState(loadedNews);
+
   console.log(news);
   return (
     <div>

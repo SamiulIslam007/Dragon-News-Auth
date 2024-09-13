@@ -3,6 +3,7 @@ import Header from "../../shared/Header/Header";
 import RightSideNav from "../../shared/RightSideNav/RightSideNav";
 import { FaArrowLeftLong } from "react-icons/fa6";
 import { useParams } from "react-router-dom";
+import Navbar from "../../shared/Navbar/Navbar";
 
 const NewsDetails = () => {
   const { id } = useParams();
@@ -11,6 +12,7 @@ const NewsDetails = () => {
   return (
     <div>
       <Header />
+      <Navbar />
       <div className="grid mt-8 grid-cols-4">
         <div className="col-span-3 p-5 pt-0">
           <div className="card bg-base-100 p-6  border border-[#E7E7E7] rounded shadow-xl">
@@ -18,7 +20,7 @@ const NewsDetails = () => {
               <img
                 className="rounded"
                 src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
-                alt="Shoes"
+                alt="News"
               />
             </figure>
             <div className="card-body">
