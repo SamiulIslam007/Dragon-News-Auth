@@ -4,6 +4,7 @@ import Home from "../pages/Home/Home";
 import Login from "../pages/LoginPage/Login";
 import Register from "../pages/RegisterPage/Register";
 import SampleToast from "../shared/sampleToast/SampleToast.jsx";
+import NewsDetails from "../pages/NewsDetails/NewsDetails.jsx";
 
 const router = createBrowserRouter([
   {
@@ -13,6 +14,11 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
+        loader: () => fetch("news.json"),
+      },
+      {
+        path: "/news/:id",
+        element: <NewsDetails />,
       },
       {
         path: "/login",

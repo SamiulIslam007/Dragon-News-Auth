@@ -1,8 +1,11 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
+import React, { useContext } from "react";
+import { Link, NavLink } from "react-router-dom";
 import { FaRegUserCircle } from "react-icons/fa";
+import { AuthContext } from "../../Providers/AuthProvider";
 
 const Navbar = () => {
+  const { user, logOut } = useContext(AuthContext);
+  console.log(user);
   const navLinks = (
     <>
       <li>
@@ -16,6 +19,17 @@ const Navbar = () => {
       </li>
     </>
   );
+
+  const handleLogOut = () => {
+    logOut()
+      .then(() => {
+        console.log("Logout successfully...");
+      })
+      .catch((e) => {
+        console.log("Error occured while logingOut", e);
+      });
+  };
+
   return (
     <div className="navbar bg-base-100 mt-5">
       <div className="navbar-start">
@@ -49,9 +63,21 @@ const Navbar = () => {
       </div>
       <div className="navbar-end space-x-2">
         <FaRegUserCircle className="text-4xl" />
-        <button className="btn bg-[#403F3F] text-white md:text-lg   font-semibold">
-          Login
-        </button>
+
+        {user ? (
+          <button
+            onClick={handleLogOut}
+            className="btn bg-[#403F3F] text-white md:text-lg   font-semibold"
+          >
+            Logout
+          </button>
+        ) : (
+          <Link to={"/login"}>
+            <button className="btn bg-[#403F3F] text-white md:text-lg   font-semibold">
+              Login
+            </button>
+          </Link>
+        )}
       </div>
     </div>
   );

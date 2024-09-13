@@ -4,8 +4,11 @@ import Navbar from "../../shared/Navbar/Navbar";
 import LeftSideNav from "../../shared/LeftSideNav/LeftSideNav.jsx";
 import RightSideNav from "../../shared/RightSideNav/RightSideNav";
 import News from "./News.jsx";
+import { useLoaderData } from "react-router-dom";
 
 const Home = () => {
+  const news = useLoaderData();
+  console.log(news);
   return (
     <div>
       <Header />
@@ -19,10 +22,9 @@ const Home = () => {
             Dragon News Home
           </h2>
           <div className="space-y-7">
-            <News />
-            <News />
-            <News />
-            <News />
+            {news.map((singleNews) => {
+              return <News key={singleNews._id} singleNews={singleNews} />;
+            })}
           </div>
         </div>
         <div>
