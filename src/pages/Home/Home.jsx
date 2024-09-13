@@ -5,6 +5,7 @@ import LeftSideNav from "../../shared/LeftSideNav/LeftSideNav.jsx";
 import RightSideNav from "../../shared/RightSideNav/RightSideNav";
 import News from "./News.jsx";
 import { useLoaderData } from "react-router-dom";
+import Headline from "../../shared/Headline/Headline.jsx";
 
 const Home = () => {
   const news = useLoaderData();
@@ -12,6 +13,7 @@ const Home = () => {
   return (
     <div>
       <Header />
+      <Headline />
       <Navbar />
       <div className="grid grid-cols-1 md:grid-cols-4 mt-16">
         <div>
