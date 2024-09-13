@@ -1,13 +1,15 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Header from "../../shared/Header/Header";
 import RightSideNav from "../../shared/RightSideNav/RightSideNav";
 import { FaArrowLeftLong } from "react-icons/fa6";
-import { useParams } from "react-router-dom";
+import { useLoaderData, useParams } from "react-router-dom";
 import Navbar from "../../shared/Navbar/Navbar";
 
 const NewsDetails = () => {
   const { id } = useParams();
-  console.log(id);
+  const allNews = useLoaderData();
+
+  const currentNews = allNews.find((singleNews) => singleNews._id === id);
 
   return (
     <div>
@@ -18,38 +20,14 @@ const NewsDetails = () => {
           <div className="card bg-base-100 p-6  border border-[#E7E7E7] rounded shadow-xl">
             <figure>
               <img
-                className="rounded"
-                src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
+                className="rounded w-full object-fill"
+                src={currentNews.image_url}
                 alt="News"
               />
             </figure>
             <div className="card-body">
-              <h2 className="card-title">
-                Biden Pledges Nearly $3 Billion To Ukraine In Largest U.S.
-                Military Aid Package Yet
-              </h2>
-              <p>
-                Wednesday, August 24, 2022 | Tag Cloud Tags: Biden, EU, Euro,
-                Europe, Joe Biden, Military, News, Russia, Security, UK,
-                Ukraine, United States, Worthy News (Worthy News) – U.S.
-                President Joe Biden has announced nearly $3 billion in new U.S.
-                military aid for Kyiv as Ukraine marked its independence day six
-                months after Russia invaded the country.'The United States of
-                America is committed to supporting the people of Ukraine as they
-                continue the fight to defend their sovereignty. As part of that
-                commitment, I am proud to announce our biggest tranche of
-                security assistance to date: approximately $2. Wednesday, August
-                24, 2022 | Tag Cloud Tags: Biden, EU, Euro, Europe, Joe Biden,
-                Military, News, Russia, Security, UK, Ukraine, United States,
-                Worthy News (Worthy News) – U.S. President Joe Biden has
-                announced nearly $3 billion in new U.S. military aid for Kyiv as
-                Ukraine marked its independence day six months after Russia
-                invaded the country.'The United States of America is committed
-                to supporting the people of Ukraine as they continue the fight
-                to defend their sovereignty. As part of that commitment, I am
-                proud to announce our biggest tranche of security assistance to
-                date: approximately $2.
-              </p>
+              <h2 className="card-title">{currentNews.title}</h2>
+              <p>{currentNews.details}</p>
               <div className="card-actions justify-Start">
                 <button className="btn bg-[#D72050] text-white rounded-none">
                   <FaArrowLeftLong /> All news in this category

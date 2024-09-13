@@ -12,7 +12,6 @@ const Home = () => {
 
   const [news, setNews] = useState(loadedNews);
 
-  console.log(news);
   return (
     <div>
       <Header />

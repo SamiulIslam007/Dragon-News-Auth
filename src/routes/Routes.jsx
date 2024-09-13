@@ -5,6 +5,7 @@ import Login from "../pages/LoginPage/Login";
 import Register from "../pages/RegisterPage/Register";
 import SampleToast from "../shared/sampleToast/SampleToast.jsx";
 import NewsDetails from "../pages/NewsDetails/NewsDetails.jsx";
+import PrivateRoutes from "./PrivateRoutes.jsx";
 
 const router = createBrowserRouter([
   {
@@ -18,7 +19,12 @@ const router = createBrowserRouter([
       },
       {
         path: "/news/:id",
-        element: <NewsDetails />,
+        element: (
+          <PrivateRoutes>
+            <NewsDetails />
+          </PrivateRoutes>
+        ),
+        loader: () => fetch("/news.json"),
       },
       {
         path: "/login",
