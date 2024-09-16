@@ -1,10 +1,12 @@
 import React, { useContext } from "react";
 import Navbar from "../../shared/Navbar/Navbar";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProvider";
 
 const Login = () => {
   const { logIn } = useContext(AuthContext);
+  const location = useLocation();
+  const navigate = useNavigate();
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -12,14 +14,23 @@ const Login = () => {
     const form = new FormData(e.currentTarget);
     const email = form.get("email");
     const password = form.get("password");
+
     console.log(email, password);
-    logIn(email, password)
-      .then((result) => {
-        console.log(result.user);
-      })
-      .catch((e) => {
-        console.log("Error occured while loging in...", e);
-      });
+
+    try {
+      logIn(email, password)
+        .then((result) => {
+          console.log("Log in successfull", result.user);
+
+          // Navigate to the destination after login
+          navigate(location.state ? location.state : "/");
+        })
+        .catch((e) => {
+          console.log("Error occured while loging in...", e);
+        });
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (

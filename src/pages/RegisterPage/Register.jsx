@@ -53,7 +53,7 @@ const Register = () => {
       <Navbar />
       <div>
         <div className="bg-[#F3F3F3] shadow py-5 rounded md:w-1/2   mx-auto mt-8">
-          <h2 className="text-2xl text-center  ">Login youir account</h2>
+          <h2 className="text-2xl text-center  ">Login to your account</h2>
           <form onSubmit={registerHandler} className="card-body">
             <div className="form-control">
               <label className="label">

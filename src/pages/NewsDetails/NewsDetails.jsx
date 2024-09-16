@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from "react";
 import Header from "../../shared/Header/Header";
 import RightSideNav from "../../shared/RightSideNav/RightSideNav";
 import { FaArrowLeftLong } from "react-icons/fa6";
@@ -7,12 +6,9 @@ import Navbar from "../../shared/Navbar/Navbar";
 
 const NewsDetails = () => {
   const { id } = useParams();
-  const location = useLocation();
   const allNews = useLoaderData();
 
   const currentNews = allNews.find((singleNews) => singleNews._id === id);
-
-  console.log(location.pathname);
 
   return (
     <div>
