@@ -6,11 +6,13 @@ import Register from "../pages/RegisterPage/Register";
 import SampleToast from "../shared/sampleToast/SampleToast.jsx";
 import NewsDetails from "../pages/NewsDetails/NewsDetails.jsx";
 import PrivateRoutes from "./PrivateRoutes.jsx";
+import NotFoundPage from "../pages/NotFoundPage/NotFoundPage.jsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Root />,
+    errorElement: <NotFoundPage />,
     children: [
       {
         path: "/",
